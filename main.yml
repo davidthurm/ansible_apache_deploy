@@ -4,3 +4,10 @@
   tasks:
         - name: install apache
           yum: name=httpd state=present
+
+        - name: Enable service httpd and ensure it is not masked
+          ansible.builtin.systemd:
+            name: httpd
+            enabled: yes
+            state: started
+            masked: no
