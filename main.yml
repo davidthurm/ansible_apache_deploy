@@ -4,6 +4,8 @@
   tasks:
         - name: install apache
           yum: name=httpd state=present
+          vars:
+            ansible_python_interpreter: /usr/bin/python3
 
         - name: Enable service httpd and ensure it is not masked
           ansible.builtin.systemd:
@@ -11,3 +13,11 @@
             enabled: yes
             state: started
             masked: no
+        - name: Ensure botocore and boto3 modules are installed for Python2
+          vars:
+          ansible_python_interpreter: /usr/bin/python
+          pip:
+            name:
+            - "boto3"
+            - "botocore"
+            extra_args: "--user"
