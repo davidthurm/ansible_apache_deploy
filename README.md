@@ -1,6 +1,7 @@
 # ansible_apache_deploy
 ```
 ansible-playbook -i hosts -l centos main.yml 
+ansible-playbook -i hosts -l rocky main.yml 
 ```
 # The Playbook
 ```
